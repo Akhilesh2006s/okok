@@ -164,7 +164,7 @@ export default function ProductsPage() {
             <strong>Standard format:</strong> Name, SKU, HSN Code, Price, Purchase Price, GST Rate, Stock, Min Stock, Unit, Category, Name (Hindi)
           </p>
           <p style={{ margin: 0, fontSize: '0.75rem', color: 'var(--gray-500)' }}>
-            Note: For vegetables, the system will automatically set unit to 'kg' and category to 'vegetables'
+            Note: For vegetables, the system will automatically set unit to &apos;kg&apos; and category to &apos;vegetables&apos;
           </p>
         </div>
       </div>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { dashboardAPI, authAPI } from '@/lib/api';
 import Link from 'next/link';
@@ -11,12 +11,7 @@ export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<any>(null);
 
-  useEffect(() => {
-    loadDashboard();
-    loadUser();
-  }, []);
-
-  const loadUser = async () => {
+  const loadUser = useCallback(async () => {
     try {
       const timeoutPromise = new Promise((_, reject) => 
         setTimeout(() => reject(new Error('Timeout')), 5000)
@@ -33,9 +28,9 @@ export default function DashboardPage() {
     } catch (error) {
       router.push('/login');
     }
-  };
+  }, [router]);
 
-  const loadDashboard = async () => {
+  const loadDashboard = useCallback(async () => {
     try {
       const response = await dashboardAPI.getDashboard();
       setDashboardData(response.data);
@@ -44,7 +39,12 @@ export default function DashboardPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadDashboard();
+    loadUser();
+  }, [loadDashboard, loadUser]);
 
   if (loading) {
     return (
@@ -165,7 +165,7 @@ export default function DashboardPage() {
             Welcome back{user?.name ? `, ${user.name.split(' ')[0]}` : ''}! 👋
           </h1>
           <p style={{ color: 'var(--gray-600)', fontSize: '1rem' }}>
-            Here's what's happening with your business today.
+            Here&apos;s what&apos;s happening with your business today.
           </p>
         </div>
         <div style={{ 

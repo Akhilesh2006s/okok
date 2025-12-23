@@ -122,7 +122,7 @@ export default function LoginPage() {
 
         <div style={{ marginTop: '1.5rem', textAlign: 'center' }}>
           <p style={{ color: 'var(--gray-600)', fontSize: '0.875rem', marginBottom: '0.5rem' }}>
-            Don't have an account?
+            Don&apos;t have an account?
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
             <Link href="/register" style={{ 
