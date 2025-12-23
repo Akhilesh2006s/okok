@@ -177,8 +177,7 @@ export default function Layout({ children }: LayoutProps) {
         <div style={{ 
           marginTop: 'auto', 
           padding: '1.5rem', 
-          borderTop: '1px solid var(--gray-200)',
-          marginTop: '2rem'
+          borderTop: '1px solid var(--gray-200)'
         }}>
           <div style={{
             padding: '0.75rem',
